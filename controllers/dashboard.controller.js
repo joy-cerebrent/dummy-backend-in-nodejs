@@ -54,6 +54,17 @@ const chartData = {
   },
 };
 
+const getMode = (prompt) => {
+  let mode = "append";
+  
+  if (/replace|change|reset/i.test(prompt)) {
+    mode = "replace";
+  } else if (/add|append|create|insert|update/i.test(prompt)) {
+    mode = "append";
+  }
+
+  return mode;
+}
 
 export const generateComponents = async (req, res) => {
   const { prompt } = req.body;
@@ -63,12 +74,7 @@ export const generateComponents = async (req, res) => {
   const componentKeywords = ["pie", "bar", "radar", "line", "table"];
   const components = [];
 
-  let mode = "append";
-  if (/replace|change/i.test(prompt)) {
-    mode = "replace";
-  } else if (/add|append|create|insert/i.test(prompt)) {
-    mode = "append";
-  }
+  const mode = getMode(prompt);
 
   componentKeywords.forEach((keyword) => {
     if (new RegExp(`\\b${keyword}\\b`, "i").test(prompt)) {
@@ -81,3 +87,23 @@ export const generateComponents = async (req, res) => {
     components,
   });
 };
+
+export const generateForm = async (req, res) => {
+  const { prompt } = req.body;
+
+  const formKeywords = ["first name", "last name", "email", "password"];
+  const formComponents = [];
+
+  const mode = getMode(prompt);
+
+  formKeywords.forEach((keyword) => {
+    if(new RegExp(`\\b${keyword}\\b`, "i").test(prompt)){
+      formComponents.push(keyword);
+    }
+  });
+
+  res.status(200).json({
+    mode,
+    components: formComponents,
+  });
+}

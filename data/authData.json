@@ -1,16 +1,16 @@
 {
   "users": [
     {
-      "email": "joybrar2001@gmail.com",
-      "password": "$2b$10$B1/gQi0bzCEkTi8Jwewyne.oGRwa2WkuBPNzZWxGVFWzku30h30ay"
-    },
-    {
       "email": "johndoe123@mail.com",
       "password": "$2b$10$2mAI8dKJYJSbaAi1HvybkOzxOS4kNuW79As1eC2w/Lo/yiyCArU2u"
     },
     {
       "email": "joybrar2001@email.com",
       "password": "$2b$10$uwvJSVTMqJVyr.7kTbIET.Zq891.mBB0y9h4sHX9ytLXMpC3HVDAy"
+    },
+    {
+      "email": "joybrar2001@gmail.com",
+      "password": "$2b$10$wT8VnbbsaQ.rpfMTT31Qo.Mls.SlPixL0U0zPReqDtGGQ.CFW7MEC"
     }
   ]
 }
