@@ -56,7 +56,7 @@ const chartData = {
 
 const getMode = (prompt) => {
   let mode = "append";
-  
+
   if (/replace|change|reset/i.test(prompt)) {
     mode = "replace";
   } else if (/add|append|create|insert|update/i.test(prompt)) {
@@ -65,6 +65,13 @@ const getMode = (prompt) => {
 
   return mode;
 }
+
+const convertToCamelCase = (str) => {
+  return str
+    .toLowerCase()
+    .replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) => (index === 0 ? word.toLowerCase() : word.toUpperCase()))
+    .replace(/\s+/g, "");
+};
 
 export const generateComponents = async (req, res) => {
   const { prompt } = req.body;
@@ -88,22 +95,57 @@ export const generateComponents = async (req, res) => {
   });
 };
 
+const addValidation = (str) => {
+  if (str.toLowerCase().includes("name")) {
+    return {
+      name: str,
+      minLength: 2,
+      maxLength: 100,
+      required: true,
+    };
+  } else if (str.toLowerCase().includes("email")) {
+    return {
+      name: str,
+      type: "email",
+      pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+      required: true,
+    };
+  } else if (str.toLowerCase().includes("password")) {
+    return {
+      name: str,
+      type: "password",
+      minLength: 6,
+      maxLength: 50,
+      required: true,
+    };
+  } else {
+    return {
+      name: str,
+      required: false,
+    };
+  }
+}
+
 export const generateForm = async (req, res) => {
   const { prompt } = req.body;
 
-  const formKeywords = ["first name", "last name", "email", "password"];
+  await wait(2);
+
+  const formKeywords = ["first name", "last name", "description", "email", "password"];
   const formComponents = [];
 
   const mode = getMode(prompt);
 
   formKeywords.forEach((keyword) => {
-    if(new RegExp(`\\b${keyword}\\b`, "i").test(prompt)){
-      formComponents.push(keyword);
+    if (new RegExp(`\\b${keyword}\\b`, "i").test(prompt)) {
+      formComponents.push(convertToCamelCase(keyword));
     }
   });
 
+  const formComponentsWithValidations = formComponents.map((component) => addValidation(component))
+
   res.status(200).json({
     mode,
-    components: formComponents,
+    components: formComponentsWithValidations,
   });
 }
