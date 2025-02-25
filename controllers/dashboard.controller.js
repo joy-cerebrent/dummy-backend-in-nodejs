@@ -61,6 +61,8 @@ const getMode = (prompt) => {
     mode = "replace";
   } else if (/add|append|create|insert|update/i.test(prompt)) {
     mode = "append";
+  } else if (/remove|delete|erase/i.test(prompt)) {
+    mode = "remove";
   }
 
   return mode;
@@ -132,7 +134,7 @@ export const generateForm = async (req, res) => {
   await wait(2);
 
   const formKeywords = ["first name", "last name", "description", "email", "password"];
-  const formComponents = [];
+  var formComponents = [];
 
   const mode = getMode(prompt);
 
@@ -142,10 +144,12 @@ export const generateForm = async (req, res) => {
     }
   });
 
-  const formComponentsWithValidations = formComponents.map((component) => addValidation(component))
+  if (mode !== "remove") {
+    formComponents = formComponents.map((component) => addValidation(component));
+  }
 
   res.status(200).json({
     mode,
-    components: formComponentsWithValidations,
+    components: formComponents,
   });
 }
