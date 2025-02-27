@@ -1,58 +1,6 @@
+import fs from 'fs';
+import path from "path";
 import wait from "../utils/wait.js";
-
-const chartData = {
-  pie: {
-    type: "pie",
-    data: [
-      { name: "Mobile", value: 40 },
-      { name: "Desktop", value: 30 },
-      { name: "Tablet", value: 20 },
-      { name: "Other", value: 10 },
-    ],
-  },
-  bar: {
-    type: "bar",
-    data: [
-      { name: "January", Mobile: 400, Desktop: 240 },
-      { name: "February", Mobile: 300, Desktop: 139 },
-      { name: "March", Mobile: 200, Desktop: 280 },
-      { name: "April", Mobile: 278, Desktop: 390 },
-    ],
-  },
-  radar: {
-    type: "radar",
-    data: [
-      { feature: "Tracking", mobile: 15, desktop: 110, max: 150 },
-      { feature: "Builder", mobile: 130, desktop: 90, max: 150 },
-      { feature: "Schedule", mobile: 86, desktop: 130, max: 150 },
-      { feature: "AI Train", mobile: 125, desktop: 40, max: 150 },
-      { feature: "Interval", mobile: 148, desktop: 90, max: 150 },
-    ],
-  },
-  line: {
-    type: "line",
-    data: [
-      { name: "Jan", Returning: 275, New: 41 },
-      { name: "Feb", Returning: 620, New: 96 },
-      { name: "Mar", Returning: 202, New: 192 },
-      { name: "Apr", Returning: 500, New: 50 },
-      { name: "May", Returning: 355, New: 400 },
-      { name: "Jun", Returning: 875, New: 200 },
-      { name: "Jul", Returning: 700, New: 400 },
-    ],
-  },
-  table: {
-    type: "table",
-    data: [
-      { cusId: "#48149", sku: "Pro 1 Month", date: "Aug 2nd", price: "$9.75" },
-      { cusId: "#1942s", sku: "Pro 3 Month", date: "Aug 2nd", price: "$21.25" },
-      { cusId: "#4192", sku: "Pro 1 Year", date: "Aug 1st", price: "$94.75" },
-      { cusId: "#99481", sku: "Pro 1 Month", date: "Aug 1st", price: "$9.44" },
-      { cusId: "#1304", sku: "Pro 1 Month", date: "Aug 1st", price: "$9.23" },
-      { cusId: "#1304", sku: "Pro 3 Month", date: "Jul 31st", price: "$22.02" },
-    ],
-  },
-};
 
 const getMode = (prompt) => {
   let mode = "append";
@@ -80,14 +28,19 @@ export const generateComponents = async (req, res) => {
 
   await wait(2);
 
-  const componentKeywords = ["pie", "bar", "radar", "line", "table"];
+  const componentKeywords = ["cards", "pie", "bar", "radar", "line", "table", "spreadsheet"];
   const components = [];
 
   const mode = getMode(prompt);
 
+  const __dirname = path.resolve();
+  const jsonFilePath = path.join(__dirname, "data", 'dashboardData.json');
+  const rawData = fs.readFileSync(jsonFilePath, "utf-8");
+  const dashboardData = JSON.parse(rawData);
+
   componentKeywords.forEach((keyword) => {
     if (new RegExp(`\\b${keyword}\\b`, "i").test(prompt)) {
-      components.push(chartData[keyword]);
+      components.push(dashboardData[keyword]);
     }
   });
 
@@ -97,10 +50,45 @@ export const generateComponents = async (req, res) => {
   });
 };
 
+export const updateComponents = async (req, res, io) => {
+  try {
+    const { components } = req.body;
+
+    if (!components || typeof components !== 'object') {
+      return res.status(400).json({ error: "Invalid data format. Expected an object." });
+    }
+
+    const __dirname = path.resolve();
+    const jsonFilePath = path.join(__dirname, "data", "dashboardData.json");
+
+    const rawData = fs.readFileSync(jsonFilePath, "utf-8");
+    const dashboardData = JSON.parse(rawData);
+
+    Object.keys(components).forEach((key) => {
+      if (dashboardData.hasOwnProperty(key)) {
+        dashboardData[key] = components[key];
+      }
+    });
+
+    fs.writeFileSync(jsonFilePath, JSON.stringify(dashboardData, null, 2), "utf-8");
+
+    io.emit("updateDashboardData", Object.values(dashboardData));
+
+    res.status(200).json({
+      message: "Components updated successfully",
+      updatedComponents: components,
+    });
+  } catch (error) {
+    res.status(500).json({ error: "Something went wrong while updating components." });
+  }
+};
+
+
 const addValidation = (str) => {
   if (str.toLowerCase().includes("name")) {
     return {
       name: str,
+      type: "text",
       minLength: 2,
       maxLength: 100,
       required: true,
@@ -120,6 +108,24 @@ const addValidation = (str) => {
       maxLength: 50,
       required: true,
     };
+  } else if (str.toLowerCase().includes("username")) {
+    return {
+      name: str,
+      type: "text",
+      minLength: 4,
+      maxLength: 50,
+      required: true,
+    };
+  } else if (str.toLowerCase().includes("description")) {
+    return {
+      name: str,
+      type: "description",
+    };
+  } else if (str.toLowerCase().includes("file")) {
+    return {
+      name: str,
+      type: "fileUploader",
+    };
   } else {
     return {
       name: str,
@@ -133,7 +139,7 @@ export const generateForm = async (req, res) => {
 
   await wait(2);
 
-  const formKeywords = ["first name", "last name", "description", "email", "password"];
+  const formKeywords = ["first name", "last name", "username", "file uploader", "description", "email", "password"];
   var formComponents = [];
 
   const mode = getMode(prompt);

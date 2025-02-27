@@ -32,7 +32,7 @@ app.use(express.json());
 app.use('/api/socket', socketRoutes(io));
 app.use('/api/movie', movieRoutes);
 app.use('/api/auth', authRoutes);
-app.use('/api/dashboard', dashboardRoutes);
+app.use('/api/dashboard', dashboardRoutes(io));
 
 io.on('connection', (socket) => {
   console.log('Client connected');

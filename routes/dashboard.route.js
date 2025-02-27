@@ -1,9 +1,16 @@
 import express from 'express';
-import { generateComponents, generateForm } from '../controllers/dashboard.controller.js';
+import {
+  generateComponents,
+  updateComponents,
+  generateForm
+} from '../controllers/dashboard.controller.js';
 
 const router = express.Router();
 
-router.post('/generate-components', generateComponents);
-router.post('/generate-form', generateForm);
+export default (io) => {
+  router.post('/generate-components', generateComponents);
+  router.post('/update-components', (req, res) => updateComponents(req, res, io));
+  router.post('/generate-form', generateForm);
 
-export default router;
+  return router;
+};

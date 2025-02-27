@@ -1,0 +1,313 @@
+{
+  "cards": {
+    "type": "cards",
+    "data": [
+      {
+        "title": "Gross Revenue",
+        "value": "$120,054.24",
+        "pillText": "2.75%",
+        "trend": "up",
+        "period": "From Jan 1st - Jul 31st"
+      },
+      {
+        "title": "Avg Order",
+        "value": "$27.97",
+        "pillText": "1.01%",
+        "trend": "down",
+        "period": "From Jan 1st - Jul 31st"
+      },
+      {
+        "title": "Trailing Year",
+        "value": "$278,054.24",
+        "pillText": "60.75%",
+        "trend": "up",
+        "period": "Previous 365 days"
+      }
+    ]
+  },
+  "pie": {
+    "type": "pie",
+    "data": [
+      {
+        "name": "Mobile",
+        "value": 40
+      },
+      {
+        "name": "Desktop",
+        "value": 30
+      },
+      {
+        "name": "Tablet",
+        "value": 20
+      },
+      {
+        "name": "Other",
+        "value": 10
+      }
+    ]
+  },
+  "bar": {
+    "type": "bar",
+    "data": [
+      {
+        "name": "January",
+        "Mobile": 400,
+        "Desktop": 240
+      },
+      {
+        "name": "February",
+        "Mobile": 300,
+        "Desktop": 139
+      },
+      {
+        "name": "March",
+        "Mobile": 200,
+        "Desktop": 280
+      },
+      {
+        "name": "April",
+        "Mobile": 278,
+        "Desktop": 390
+      }
+    ]
+  },
+  "radar": {
+    "type": "radar",
+    "data": [
+      {
+        "feature": "Tracking",
+        "mobile": 15,
+        "desktop": 110,
+        "max": 150
+      },
+      {
+        "feature": "Builder",
+        "mobile": 130,
+        "desktop": 90,
+        "max": 150
+      },
+      {
+        "feature": "Schedule",
+        "mobile": 86,
+        "desktop": 130,
+        "max": 150
+      },
+      {
+        "feature": "AI Train",
+        "mobile": 125,
+        "desktop": 40,
+        "max": 150
+      },
+      {
+        "feature": "Interval",
+        "mobile": 148,
+        "desktop": 90,
+        "max": 150
+      }
+    ]
+  },
+  "line": {
+    "type": "line",
+    "data": [
+      {
+        "name": "Jan",
+        "Returning": 275,
+        "New": 41
+      },
+      {
+        "name": "Feb",
+        "Returning": 620,
+        "New": 96
+      },
+      {
+        "name": "Mar",
+        "Returning": 202,
+        "New": 192
+      },
+      {
+        "name": "Apr",
+        "Returning": 500,
+        "New": 50
+      },
+      {
+        "name": "May",
+        "Returning": 355,
+        "New": 400
+      },
+      {
+        "name": "Jun",
+        "Returning": 875,
+        "New": 200
+      },
+      {
+        "name": "Jul",
+        "Returning": 700,
+        "New": 400
+      }
+    ]
+  },
+  "table": {
+    "type": "table",
+    "data": [
+      {
+        "cusId": "#48149",
+        "sku": "Pro 1 Month",
+        "date": "Aug 2nd",
+        "price": "$9.75"
+      },
+      {
+        "cusId": "#1942s",
+        "sku": "Pro 3 Month",
+        "date": "Aug 2nd",
+        "price": "$21.25"
+      },
+      {
+        "cusId": "#4192",
+        "sku": "Pro 1 Year",
+        "date": "Aug 1st",
+        "price": "$94.75"
+      },
+      {
+        "cusId": "#99481",
+        "sku": "Pro 1 Month",
+        "date": "Aug 1st",
+        "price": "$9.44"
+      },
+      {
+        "cusId": "#1304",
+        "sku": "Pro 1 Month",
+        "date": "Aug 1st",
+        "price": "$9.23"
+      },
+      {
+        "cusId": "#1304",
+        "sku": "Pro 3 Month",
+        "date": "Jul 31st",
+        "price": "$22.02"
+      }
+    ]
+  },
+  "spreadsheet": {
+    "type": "spreadsheet",
+    "data": [
+      [
+        "Jo",
+        "john@example",
+        "1234567890",
+        "123 Street",
+        "",
+        "New York",
+        "New York",
+        "United States",
+        "30-01-2025 00:00:00",
+        true
+      ],
+      [
+        "Jane Smith",
+        "jane@example.com",
+        "0987654321",
+        "456 Avenue",
+        "",
+        "Los Angeles",
+        "California",
+        "United States",
+        "",
+        false
+      ],
+      [
+        "Robert Brown",
+        "robert@example.com",
+        "1112233445",
+        "789 Boulevard",
+        "",
+        "Toronto",
+        "Ontario",
+        "Canada",
+        "",
+        true
+      ],
+      [
+        "Alice Johnson",
+        "alice@example.com",
+        "2223344556",
+        "101 Main St",
+        "",
+        "Vancouver",
+        "British Columbia",
+        "Canada",
+        "15-03-2024 14:00:00",
+        true
+      ],
+      [
+        "Charlie White",
+        "charlie@example.com",
+        "3334455667",
+        "202 Oak Drive",
+        "",
+        "Miami",
+        "Florida",
+        "United States",
+        "01-01-2025 00:00:00",
+        false
+      ]
+    ],
+    "types": [
+      {
+        "type": "text",
+        "title": "Name",
+        "required": true,
+        "minlength": 3,
+        "maxlength": 100
+      },
+      {
+        "type": "text",
+        "title": "Email",
+        "required": true,
+        "regex": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
+      },
+      {
+        "type": "numeric",
+        "title": "Contact No",
+        "required": true,
+        "regex": "^\\d{10}$"
+      },
+      {
+        "type": "text",
+        "title": "Address 1",
+        "required": true
+      },
+      {
+        "type": "text",
+        "title": "Address 2"
+      },
+      {
+        "type": "text",
+        "title": "City",
+        "required": true
+      },
+      {
+        "type": "text",
+        "title": "State",
+        "required": true
+      },
+      {
+        "type": "dropdown",
+        "title": "Country",
+        "source": [
+          "India",
+          "United States",
+          "United Kingdom",
+          "Canada"
+        ]
+      },
+      {
+        "type": "calendar",
+        "title": "Registered On"
+      },
+      {
+        "type": "checkbox",
+        "title": "Active"
+      }
+    ]
+  }
+}
