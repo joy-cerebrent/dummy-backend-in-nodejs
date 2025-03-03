@@ -1,5 +1,6 @@
 import express from 'express';
 import {
+  loadInitialData,
   generateComponents,
   updateComponents,
   generateForm,
@@ -9,6 +10,7 @@ import {
 const router = express.Router();
 
 export default (io) => {
+  router.get('/initial-load', loadInitialData);
   router.post('/generate-components', generateComponents);
   router.post('/update-components', (req, res) => updateComponents(req, res, io));
   router.post('/generate-form', generateForm);

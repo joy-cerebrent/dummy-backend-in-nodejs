@@ -1,6 +1,7 @@
 {
   "cards": {
-    "type": "cards",
+    "title": "cards",
+    "defaultType": "cards",
     "data": [
       {
         "title": "Gross Revenue",
@@ -25,288 +26,315 @@
       }
     ]
   },
-  "pie": {
-    "type": "pie",
+  "time": {
+    "title": "Employee Time",
+    "cols": 6,
+    "defaultType": "bar",
+    "recommededTypes": [
+      "bar",
+      "pie",
+      "radar"
+    ],
+    "allTypes": [
+      "pie",
+      "donut",
+      "nightingale",
+      "bar",
+      "line",
+      "area",
+      "radar",
+      "scatter",
+      "treemap"
+    ],
     "data": [
       {
-        "name": "Mobile",
+        "name": "Employee A",
+        "value": 120
+      },
+      {
+        "name": "Employee B",
+        "value": 200
+      },
+      {
+        "name": "Employee C",
+        "value": 150
+      },
+      {
+        "name": "Employee D",
+        "value": 80
+      }
+    ]
+  },
+  "performance": {
+    "title": "Employee Performance",
+    "cols": 6,
+    "defaultType": "radar",
+    "recommededTypes": [
+      "radar",
+      "bar",
+      "line"
+    ],
+    "allTypes": [
+      "pie",
+      "donut",
+      "nightingale",
+      "bar",
+      "line",
+      "area",
+      "radar",
+      "scatter",
+      "treemap"
+    ],
+    "data": [
+      {
+        "name": "Employee A",
+        "value": 85
+      },
+      {
+        "name": "Employee B",
+        "value": 92
+      },
+      {
+        "name": "Employee C",
+        "value": 78
+      },
+      {
+        "name": "Employee D",
+        "value": 88
+      }
+    ]
+  },
+  "time_logged_in": {
+    "title": "Time Logged In",
+    "cols": 6,
+    "defaultType": "line",
+    "recommededTypes": [
+      "line",
+      "bar",
+      "area"
+    ],
+    "allTypes": [
+      "pie",
+      "donut",
+      "nightingale",
+      "bar",
+      "line",
+      "area",
+      "radar",
+      "scatter",
+      "treemap"
+    ],
+    "data": [
+      {
+        "name": "Employee A",
         "value": 40
       },
       {
-        "name": "Desktop",
-        "value": 30
+        "name": "Employee B",
+        "value": 35
       },
       {
-        "name": "Tablet",
+        "name": "Employee C",
+        "value": 50
+      },
+      {
+        "name": "Employee D",
+        "value": 30
+      }
+    ]
+  },
+  "projects_done": {
+    "title": "Projects Completed",
+    "cols": 6,
+    "defaultType": "bar",
+    "recommededTypes": [
+      "bar",
+      "line",
+      "scatter"
+    ],
+    "allTypes": [
+      "pie",
+      "donut",
+      "nightingale",
+      "bar",
+      "line",
+      "area",
+      "radar",
+      "scatter",
+      "treemap"
+    ],
+    "data": [
+      {
+        "name": "Employee A",
+        "value": 5
+      },
+      {
+        "name": "Employee B",
+        "value": 8
+      },
+      {
+        "name": "Employee C",
+        "value": 7
+      },
+      {
+        "name": "Employee D",
+        "value": 6
+      }
+    ]
+  },
+  "attendance": {
+    "title": "Attendance Rate",
+    "cols": 6,
+    "defaultType": "pie",
+    "recommededTypes": [
+      "pie",
+      "donut",
+      "bar"
+    ],
+    "allTypes": [
+      "pie",
+      "donut",
+      "nightingale",
+      "bar",
+      "line",
+      "area",
+      "radar",
+      "scatter",
+      "treemap"
+    ],
+    "data": [
+      {
+        "name": "Employee A",
+        "value": 95
+      },
+      {
+        "name": "Employee B",
+        "value": 90
+      },
+      {
+        "name": "Employee C",
+        "value": 88
+      },
+      {
+        "name": "Employee D",
+        "value": 85
+      }
+    ]
+  },
+  "productivity": {
+    "title": "Productivity Score",
+    "cols": 6,
+    "defaultType": "radar",
+    "recommededTypes": [
+      "radar",
+      "bar",
+      "line"
+    ],
+    "allTypes": [
+      "pie",
+      "donut",
+      "nightingale",
+      "bar",
+      "line",
+      "area",
+      "radar",
+      "scatter",
+      "treemap"
+    ],
+    "data": [
+      {
+        "name": "Employee A",
+        "value": 80
+      },
+      {
+        "name": "Employee B",
+        "value": 85
+      },
+      {
+        "name": "Employee C",
+        "value": 75
+      },
+      {
+        "name": "Employee D",
+        "value": 70
+      }
+    ]
+  },
+  "break_time": {
+    "title": "Break Time Taken (Minutes)",
+    "cols": 6,
+    "defaultType": "bar",
+    "recommededTypes": [
+      "bar",
+      "scatter",
+      "treemap"
+    ],
+    "allTypes": [
+      "pie",
+      "donut",
+      "nightingale",
+      "bar",
+      "line",
+      "area",
+      "radar",
+      "scatter",
+      "treemap"
+    ],
+    "data": [
+      {
+        "name": "Employee A",
+        "value": 15
+      },
+      {
+        "name": "Employee B",
         "value": 20
       },
       {
-        "name": "Other",
+        "name": "Employee C",
         "value": 10
+      },
+      {
+        "name": "Employee D",
+        "value": 18
       }
     ]
   },
-  "bar": {
-    "type": "bar",
-    "data": [
-      {
-        "name": "January",
-        "Mobile": 400,
-        "Desktop": 240
-      },
-      {
-        "name": "February",
-        "Mobile": 300,
-        "Desktop": 139
-      },
-      {
-        "name": "March",
-        "Mobile": 200,
-        "Desktop": 280
-      },
-      {
-        "name": "April",
-        "Mobile": 278,
-        "Desktop": 390
-      }
-    ]
-  },
-  "radar": {
-    "type": "radar",
-    "data": [
-      {
-        "feature": "Tracking",
-        "mobile": 15,
-        "desktop": 110,
-        "max": 150
-      },
-      {
-        "feature": "Builder",
-        "mobile": 130,
-        "desktop": 90,
-        "max": 150
-      },
-      {
-        "feature": "Schedule",
-        "mobile": 86,
-        "desktop": 130,
-        "max": 150
-      },
-      {
-        "feature": "AI Train",
-        "mobile": 125,
-        "desktop": 40,
-        "max": 150
-      },
-      {
-        "feature": "Interval",
-        "mobile": 148,
-        "desktop": 90,
-        "max": 150
-      }
-    ]
-  },
-  "line": {
-    "type": "line",
-    "data": [
-      {
-        "name": "Jan",
-        "Returning": 275,
-        "New": 41
-      },
-      {
-        "name": "Feb",
-        "Returning": 620,
-        "New": 96
-      },
-      {
-        "name": "Mar",
-        "Returning": 202,
-        "New": 192
-      },
-      {
-        "name": "Apr",
-        "Returning": 500,
-        "New": 50
-      },
-      {
-        "name": "May",
-        "Returning": 355,
-        "New": 400
-      },
-      {
-        "name": "Jun",
-        "Returning": 875,
-        "New": 200
-      },
-      {
-        "name": "Jul",
-        "Returning": 700,
-        "New": 400
-      }
-    ]
-  },
-  "table": {
-    "type": "table",
-    "data": [
-      {
-        "cusId": "#48149",
-        "sku": "Pro 1 Month",
-        "date": "Aug 2nd",
-        "price": "$9.75"
-      },
-      {
-        "cusId": "#1942s",
-        "sku": "Pro 3 Month",
-        "date": "Aug 2nd",
-        "price": "$21.25"
-      },
-      {
-        "cusId": "#4192",
-        "sku": "Pro 1 Year",
-        "date": "Aug 1st",
-        "price": "$94.75"
-      },
-      {
-        "cusId": "#99481",
-        "sku": "Pro 1 Month",
-        "date": "Aug 1st",
-        "price": "$9.44"
-      },
-      {
-        "cusId": "#1304",
-        "sku": "Pro 1 Month",
-        "date": "Aug 1st",
-        "price": "$9.23"
-      },
-      {
-        "cusId": "#1304",
-        "sku": "Pro 3 Month",
-        "date": "Jul 31st",
-        "price": "$22.02"
-      }
-    ]
-  },
-  "spreadsheet": {
-    "type": "spreadsheet",
-    "data": [
-      [
-        "Jo",
-        "john@example",
-        "1234567890",
-        "123 Street",
-        "",
-        "New York",
-        "New York",
-        "United States",
-        "30-01-2025 00:00:00",
-        true
-      ],
-      [
-        "Jane Smith",
-        "jane@example.com",
-        "0987654321",
-        "456 Avenue",
-        "",
-        "Los Angeles",
-        "California",
-        "United States",
-        "",
-        false
-      ],
-      [
-        "Robert Brown",
-        "robert@example.com",
-        "1112233445",
-        "789 Boulevard",
-        "",
-        "Toronto",
-        "Ontario",
-        "Canada",
-        "",
-        true
-      ],
-      [
-        "Alice Johnson",
-        "alice@example.com",
-        "2223344556",
-        "101 Main St",
-        "",
-        "Vancouver",
-        "British Columbia",
-        "Canada",
-        "15-03-2024 14:00:00",
-        true
-      ],
-      [
-        "Charlie White",
-        "charlie@example.com",
-        "3334455667",
-        "202 Oak Drive",
-        "",
-        "Miami",
-        "Florida",
-        "United States",
-        "01-01-2025 00:00:00",
-        false
-      ]
+  "sales_generated": {
+    "title": "Sales Generated ($)",
+    "cols": 6,
+    "defaultType": "treemap",
+    "recommededTypes": [
+      "treemap",
+      "pie",
+      "nightingale"
     ],
-    "types": [
+    "allTypes": [
+      "pie",
+      "donut",
+      "nightingale",
+      "bar",
+      "line",
+      "area",
+      "radar",
+      "scatter",
+      "treemap"
+    ],
+    "data": [
       {
-        "type": "text",
-        "title": "Name",
-        "required": true,
-        "minlength": 3,
-        "maxlength": 100
+        "name": "Employee A",
+        "value": 10000
       },
       {
-        "type": "text",
-        "title": "Email",
-        "required": true,
-        "regex": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
+        "name": "Employee B",
+        "value": 15000
       },
       {
-        "type": "numeric",
-        "title": "Contact No",
-        "required": true,
-        "regex": "^\\d{10}$"
+        "name": "Employee C",
+        "value": 12000
       },
       {
-        "type": "text",
-        "title": "Address 1",
-        "required": true
-      },
-      {
-        "type": "text",
-        "title": "Address 2"
-      },
-      {
-        "type": "text",
-        "title": "City",
-        "required": true
-      },
-      {
-        "type": "text",
-        "title": "State",
-        "required": true
-      },
-      {
-        "type": "dropdown",
-        "title": "Country",
-        "source": [
-          "India",
-          "United States",
-          "United Kingdom",
-          "Canada"
-        ]
-      },
-      {
-        "type": "calendar",
-        "title": "Registered On"
-      },
-      {
-        "type": "checkbox",
-        "title": "Active"
+        "name": "Employee D",
+        "value": 9000
       }
     ]
   }

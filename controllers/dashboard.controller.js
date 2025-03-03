@@ -23,12 +23,23 @@ const convertToCamelCase = (str) => {
     .replace(/\s+/g, "");
 };
 
+export const loadInitialData = async (req, res) => {
+  const __dirname = path.resolve();
+  const jsonFilePath = path.join(__dirname, "data", 'dashboardData.json');
+  const rawData = fs.readFileSync(jsonFilePath, "utf-8");
+  const dashboardData = JSON.parse(rawData);
+
+  return res.status(200).json({
+    components: Object.values(dashboardData).filter(c => c.defaultType !== "cards"),
+  });
+}
+
 export const generateComponents = async (req, res) => {
   const { prompt } = req.body;
 
   await wait(2);
 
-  const componentKeywords = ["cards", "pie", "bar", "radar", "line", "table", "spreadsheet"];
+  const componentKeywords = ["cards", "time", "performance", "time_logged_in", "projects_done", "attendance", "productivity", "break_time", "sales_generated"];
   const components = [];
 
   const mode = getMode(prompt);
@@ -44,7 +55,7 @@ export const generateComponents = async (req, res) => {
     }
   });
 
-  res.status(200).json({
+  return res.status(200).json({
     mode,
     components,
   });
